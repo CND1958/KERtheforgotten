@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotating Tetrahedron</title>
+<style>
+body{margin:0;background:black;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;color:white;font-family:monospace;overflow:hidden;}
+#timer{font-size:1rem;margin-bottom:10px;opacity:.8;}
+#container{width:300px;height:360px;border:1px solid rgba(255,255,255,.3);position:relative;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:10px;box-sizing:border-box;overflow:hidden;}
+#scene-container{width:100%;flex:1;display:flex;align-items:center;justify-content:center;}
+canvas{width:100%;height:100%;display:block;}
+#password-box{width:60%;margin-top:5px;}
+input[type=password]{width:100%;padding:4px;font-size:.85rem;background:transparent;border:1px solid white;color:white;outline:none;box-sizing:border-box;}
+#bottom-left-symbol{position:absolute;bottom:10px;left:10px;font-size:1.5rem;opacity:.8;pointer-events:none;}
+#bottom-text{font-size:.9rem;margin-top:10px;opacity:.8;}
+#next-page-container{width:300px;height:360px;border:1px solid rgba(255,255,255,.3);padding:15px;box-sizing:border-box;color:white;font-family:monospace;line-height:1.4;position:relative;overflow:hidden;}
+#next-page-symbol{position:absolute;bottom:10px;left:10px;font-size:1.5rem;opacity:.8;}
+#vhs-overlay{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0px,rgba(255,255,255,.02) 1px,transparent 1px,transparent 2px);animation:vhs-flicker 0.15s infinite;}
+@keyframes vhs-flicker{0%{opacity:.02;}50%{opacity:.08;}100%{opacity:.02;}}
+#vhs-glitch{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;background:rgba(255,0,0,.02);animation:glitch 0.2s infinite;}
+@keyframes glitch{0%{transform:translate(0,0);}25%{transform:translate(2px,-2px);}50%{transform:translate(-2px,1px);}75%{transform:translate(1px,2px);}100%{transform:translate(0,0);}}
+</style>
+</head>
+<body>
+<div id="timer">00:00:00</div>
+<div id="container">
+<div id="scene-container">
+<canvas id="scene"></canvas>
+</div>
+<div id="password-box">
+<input type="password" id="passwordInput">
+</div>
+<div id="bottom-left-symbol">𓂀</div>
+</div>
+<div id="bottom-text">Sorry, Come back later</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// Disable right-click
+document.addEventListener('contextmenu', e => e.preventDefault());
 
+// Timer
+let startTime=Date.now();
+const timerEl=document.getElementById("timer");
+function updateTimer(){let elapsed=Math.floor((Date.now()-startTime)/1000);let hrs=String(Math.floor(elapsed/3600)).padStart(2,'0');let mins=String(Math.floor((elapsed%3600)/60)).padStart(2,'0');let secs=String(elapsed%60).padStart(2,'0');timerEl.textContent=`${hrs}:${mins}:${secs}`;return elapsed;}
+
+// Scene setup
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,300/250,0.1,1000);
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,canvas:document.getElementById('scene')});
+const sceneContainer=document.getElementById("scene-container");
+function resizeRenderer(){const rect=sceneContainer.getBoundingClientRect();renderer.setSize(rect.width,rect.height);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix();}
+resizeRenderer();
+
+// Tetrahedron
+const geometry=new THREE.TetrahedronGeometry(1);
+const material=new THREE.MeshBasicMaterial({color:0xffffff,wireframe:true});
+const tetrahedron=new THREE.Mesh(geometry,material);
+scene.add(tetrahedron);
+camera.position.z=3;
+let scale=.01,growing=true,turnedRed=false,spinSpeed=.01;
+
+function animate(){requestAnimationFrame(animate);let elapsed=updateTimer();
+if(growing){scale+=.01;if(scale>=1)growing=false;tetrahedron.scale.set(scale,scale,scale);}
+if(elapsed>=720&&!turnedRed){material.color.set(0xff0000);material.needsUpdate=true;turnedRed=true;const glow=document.createElement('style');glow.innerHTML=`canvas{filter:drop-shadow(0 0 15px red) drop-shadow(0 0 25px red);}`;document.head.appendChild(glow);spinSpeed=.05;}
+tetrahedron.rotation.z+=spinSpeed;tetrahedron.rotation.y+=spinSpeed;
+renderer.render(scene,camera);}
+animate();
+window.addEventListener('resize',resizeRenderer);
+
+// PASSWORD CHECK
+const input=document.getElementById("passwordInput");
+input.addEventListener("keydown",function(e){
+if(e.key==="Enter"){
+if(input.value.toUpperCase()==="POLAR"){
+document.body.innerHTML=`
+<div id="next-page-container">
+If •>1 =  ABCDEFGHIJKLMNOPQRSTUVWXYZ + (2 × 36 + x = 9T + 11) 
+<• 8 = ⏃⌿⏁ ⌖⊑☍⊑⌿⎅ 
+•V 10 = + 1  I E J S
+X = L AND O
+then how to spell 
+X⏃K⏃ GXXA
+If "< > V" are refrence to a symbol chart.
+<div id="next-page-symbol">𓂀</div>
+<div id="vhs-overlay"></div>
+<div id="vhs-glitch"></div>
+</div>`;
+}else{alert("Incorrect password");}}});
+</script>
+</body>
+</html>
