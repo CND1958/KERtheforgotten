@@ -202,7 +202,6 @@ function animate(){
     material.color.set(0xff0000);
     material.needsUpdate = true;
     turnedRed = true;
-    // add extra glow (CSS)
     document.querySelector('canvas').classList.add('red-glow-canvas');
     spinSpeed = .05;
   }
@@ -218,7 +217,6 @@ animate();
   function pulse(){
     glitchEls.forEach(el=>{
       el.style.opacity = (0.04 + Math.random()*0.08).toFixed(2);
-      // occasionally create a stronger pulse
       if(Math.random() < 0.07){ el.style.opacity = (0.08 + Math.random()*0.22).toFixed(2); }
     });
     const delay = 100 + Math.random()*1200;
@@ -250,14 +248,13 @@ input.addEventListener("keydown", function(e){
           <div style="white-space:pre-wrap;font-family:monospace;font-size:0.9rem;">
 If •>1 =  BCEGIMNQRSUVWYZ + (2 × 36 + x = 9T + 11) 
 
- <• 8 = ⏃⌿⏁ ⌖⊑☍⊑⌿⎅ 
+<• 8 = ⏃⌿⏁ ⌖⊑☍⊑⌿⎅ 
 
 •V 10 = + 1  I E J S
 
 X = L AND O
 
 then how to spell 
-
 
 AG⏃X⏃AAAGA 
 
@@ -290,7 +287,6 @@ If "< > V" are refrence to a symbol chart.
     } else {
       // wrong password shake
       document.getElementById('container')?.classList.add('shake');
-      // quick CSS shake
       const el = document.getElementById('container');
       if(el){
         el.style.transition = 'transform .08s';
