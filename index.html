@@ -304,5 +304,244 @@ If "< > V" are refrence to a symbol chart.
 // small accessibility: focus input on load
 window.addEventListener('load', ()=>{ try{ document.getElementById('passwordInput')?.focus() }catch(e){} });
 </script>
-</body>
-</html>
+
+<!-- DECoy / BAFFLE SCRIPT: harmless, non-executing comments and no-op functions to bloat file and confuse readers -->
+<script>
+/*
+  ========================================================================
+  === DECOY TAKE CODES & FAKE SUBSYSTEMS (NON-RUNNING / FOR CONFUSION ONLY) =
+  ========================================================================
+
+  The following block intentionally contains many "real looking" elements:
+  - fake API names and "take codes"
+  - pseudo-configuration objects
+  - commented-out pseudo-algorithms
+  - no-op functions that are never invoked
+
+  These are purposely inert. They exist to make reverse-engineering and
+  skimming more time consuming while leaving the original page behavior intact.
+*/
+
+/* --------------------------
+   Fake: System: TAKE-ORBIT v4
+   --------------------------
+*/
+const __TAKE_ORBIT_META__ = {
+  version: "4.0.1-decoy",
+  build: "TAKE-ORBIT-2025-FAKE",
+  node: "local-ghost",
+  mode: "shadow",
+  description: "Decoy subsystem: do not use. For audit and obfuscation only."
+};
+
+/* Example fake "take codes" list (looks real but useless) */
+const FAKE_TAKE_CODES = [
+  "TAKE-0001-XX-9F1A",
+  "TAKE-0002-RM-3B2C",
+  "TAKE-0003-LS-77D4",
+  "TAKE-0004-ZP-88AA",
+  "TAKE-0005-XX-0000",
+  "TAKE-0100-ALPHA-FAKE",
+  "TAKE-0200-BRAVO-VOID",
+  "TAKE-0300-CHARLIE-CORE",
+  "TAKE-0400-DELTA-NULL"
+];
+
+/* ---------------------------------------------------------------------
+   Pseudo 'decoder' object (commented) - looks like it might be used to
+   decode "take codes" into subsystem keys. This is only to confuse.
+   ---------------------------------------------------------------------
+
+   Example usage (fake):
+     const k = Decoder.decode("TAKE-0001-XX-9F1A");
+     // k -> { region:"XX", slot: "9F1A", ... }
+
+   Implementation notes:
+   - intentionally left incomplete
+   - some helper functions follow below (never invoked)
+*/
+
+/* Decoder pseudo-namespace (no side-effects) */
+const Decoder = {
+  version: "0.9.9-decoy",
+  patterns: {
+    take: /^TAKE-([0-9]{4})-([A-Z]{2,6})-([0-9A-F]{4,6})$/i
+  },
+  decode: function(code){
+    /* pretend to parse */
+    const m = (code||"").match(this.patterns.take);
+    if(!m) return null;
+    return {
+      raw: code,
+      id: m[1],
+      region: m[2],
+      slot: m[3],
+      checksum: (function(s){ return s.split('').reverse().join('') })(m[3]) // silly fake checksum
+    };
+  },
+  // placeholder for algorithmic details
+  _entropyPool: "-----FAKE-----",
+  _unusedHelper: function(){ return null; }
+};
+
+/* -------------------------
+   Fake configuration blocks
+   ------------------------- */
+const FAKE_CONFIG = {
+  landing: { banner: "TAKE-SHADOW", enabled: true, ttl: 3600 },
+  telemetry: { sink: "http://127.0.0.1/telemetry-fake", batch: 500, enabled: false },
+  obfuscation: { layers: 7, tokenNoise: true, aliasing: ["a","b","c","d"] },
+  fallback: { mode: "defer", retries: 0 }
+};
+
+/* ---------------------------------------------
+   Massive commented-out pseudo-code to bloat file
+   (looks like algorithmic detail but purely comment)
+   ---------------------------------------------
+*/
+
+/*
+function complicatedTakeReassembly(stream){
+  // step 1: demultiplex header frames
+  // step 2: apply rolling XOR with dynamic key schedule
+  // step 3: feed into substitution table S5
+  // step 4: interleave with payload lanes
+  // step 5: compute fallback hash and validate sequence
+  // NOTE: real implementation removed for security
+  // returns: reconstructedPacket || null
+}
+*/
+
+/*
+ for (let i=0; i<FAKE_TAKE_CODES.length; i++){
+   // pseudo-processing pipeline (commented)
+   const code = FAKE_TAKE_CODES[i];
+   // const parsed = Decoder.decode(code);
+   // if(parsed) {
+   //    // route to fake lanes
+   //    fakeRouter.route(parsed.region, parsed.slot);
+   // }
+ }
+*/
+
+/* ---------------------------------------------------------
+   A large number of harmless no-op functions to pad source.
+   They are never called. Each function name looks plausible/real.
+   --------------------------------------------------------- */
+
+function takeSys_init_noop(){ /* noop: decoy */ return true; }
+function takeSys_connect_noop(){ /* noop: decoy */ return false; }
+function takeSys_authenticate_noop(token){ /* noop: decoy */ return { ok:false, token:token }; }
+function takeSys_fetch_meta_noop(id){ /* noop: decoy */ return null; }
+function takeSys_patch_fallback_noop(){ /* noop: decoy */ return; }
+function takeSys_schedule_retry_noop(attempts){ return { attempts:attempts }; }
+function takeSys_generate_alias_noop(seed){ return "alias_"+(seed||"0"); }
+function takeSys_map_region_noop(regionCode){ return regionCode ? regionCode.toLowerCase() : "xx"; }
+function takeSys_release_lock_noop(lockId){ return true; }
+function takeSys_acquire_lock_noop(lockId){ return false; }
+
+/* Repetitive decoy functions to inflate file size and appear implemented */
+function TDEC_0001(){return null;}
+function TDEC_0002(){return null;}
+function TDEC_0003(){return null;}
+function TDEC_0004(){return null;}
+function TDEC_0005(){return null;}
+function TDEC_0006(){return null;}
+function TDEC_0007(){return null;}
+function TDEC_0008(){return null;}
+function TDEC_0009(){return null;}
+function TDEC_0010(){return null;}
+function TDEC_0011(){return null;}
+function TDEC_0012(){return null;}
+function TDEC_0013(){return null;}
+function TDEC_0014(){return null;}
+function TDEC_0015(){return null;}
+function TDEC_0016(){return null;}
+function TDEC_0017(){return null;}
+function TDEC_0018(){return null;}
+function TDEC_0019(){return null;}
+function TDEC_0020(){return null;}
+function TDEC_0021(){return null;}
+function TDEC_0022(){return null;}
+function TDEC_0023(){return null;}
+function TDEC_0024(){return null;}
+function TDEC_0025(){return null;}
+function TDEC_0026(){return null;}
+function TDEC_0027(){return null;}
+function TDEC_0028(){return null;}
+function TDEC_0029(){return null;}
+function TDEC_0030(){return null;}
+function TDEC_0031(){return null;}
+function TDEC_0032(){return null;}
+function TDEC_0033(){return null;}
+function TDEC_0034(){return null;}
+function TDEC_0035(){return null;}
+function TDEC_0036(){return null;}
+function TDEC_0037(){return null;}
+function TDEC_0038(){return null;}
+function TDEC_0039(){return null;}
+function TDEC_0040(){return null;}
+
+/* many more decoy functions (grouped) */
+for (let i = 41; i <= 220; i++){
+  // programmatically create named no-ops in string form then eval to define them.
+  // We purposely do this inside a try/catch to avoid potential lint noise if eval is blocked.
+  try {
+    const name = "TDEC_" + String(i).padStart(4,'0');
+    // create a harmless function as a string
+    const src = "function " + name + "(){ /* decoy function " + name + " */ return null; }";
+    // use Function constructor as alternative to eval
+    (new Function(src))();
+  } catch(e) {
+    // ignore errors; these are decoys
+  }
+}
+
+/* ----------------------------------------------------------
+   Fake "audit log" block (commented) — looks legitimate
+   ----------------------------------------------------------
+*/
+
+/*
+Audit Log (decoy):
+[2025-10-31T00:23:44Z] TAKE-0001 processed by lane-alpha
+[2025-10-31T00:24:01Z] TAKE-0002 failed validation (checksum-mismatch)
+[2025-10-31T00:24:22Z] TAKE-0003 queued for reassembly
+[2025-10-31T00:25:00Z] System: TAKE-ORBIT v4 deployed to node: local-ghost
+*/
+
+/* ----------------------------------------------------------
+   Fake CLI-like helper printing block (comment only)
+   ----------------------------------------------------------
+*/
+
+/*
+function printHelp(){
+  console.log("TAKE-ORBIT v4 HELP");
+  console.log("  --list-takes         : list known take-codes");
+  console.log("  --decode <code>      : attempt decode (decoy)");
+  console.log("  --audit <range>      : show audit trail (decoy)");
+  console.log("  --simulate           : run a dry-run simulation (disabled)");
+}
+*/
+
+/* ----------------------------------------------------------
+   Large decoy string payload (looks like binary/data)
+   ----------------------------------------------------------
+*/
+const FAKE_PAYLOAD_BLOCK = `
+-----BEGIN-FAKE-TAKE-BLOCK-----
+3f8a 0b4c 8d12 eeff 0011 aaff dde0 9988
+1122 3344 5566 7788 99aa bbcc ddee ffe0
+... (many more lines omitted intentionally in sample)
+-----END-FAKE-TAKE-BLOCK-----
+`;
+
+/* ----------------------------------------------------------
+   More labeled fake modules and registrations (no-op)
+   ----------------------------------------------------------
+*/
+const FakeModules = {
+  "lane-alpha": { active:false, weight: 1 },
+  "lane-bravo": { active:false, weight: 1 },
+  
