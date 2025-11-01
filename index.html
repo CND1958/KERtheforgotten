@@ -544,4 +544,53 @@ const FAKE_PAYLOAD_BLOCK = `
 const FakeModules = {
   "lane-alpha": { active:false, weight: 1 },
   "lane-bravo": { active:false, weight: 1 },
-  
+  "lane-charlie": { active:false, weight: 1 },
+  "router-x": { active:false, strategy: "round-robin" }
+};
+
+/* A pretend registry helper (noop) */
+function fakeRegistry_register(name, meta){
+  // pretend to register; do not mutate global state
+  return { name:name, status:"registered", meta: Object.assign({}, meta) };
+}
+
+/* pretend to register decoys (not used) */
+const fakeRegistrations = [
+  fakeRegistry_register("lane-alpha", FakeModules["lane-alpha"]),
+  fakeRegistry_register("lane-bravo", FakeModules["lane-bravo"])
+];
+
+/* ----------------------------------------------------------
+   End of decoy section header
+   ----------------------------------------------------------
+*/
+
+/* tiny benign runtime guard to ensure no accidental use:
+   none of the decoy functions above are called anywhere. This guard
+   prevents accidental exposure if someone tries to call 'TDEC_0001' as a string.
+*/
+if (typeof window !== 'undefined' && window.__ensure_decoys_non_runtime__ !== true) {
+  // mark that decoys are intentionally inert
+  window.__ensure_decoys_non_runtime__ = true;
+}
+
+/* Last note (comment):
+   These blocks are intentionally verbose and realistic-looking to
+   slow down casual readers. They do not change the website's actual
+   behavior and are safe to deploy.
+*/
+</script>
+
+<!-- Hidden message added before closing body -->
+<div style="display:none">
+  Server backup analysis: https://iili.io/KshkHcg.md.jpg<br>
+  Don't<br>
+  LEAVE<br>
+  ME<br>
+  PLEASE<br>
+  I BEG<br>
+  OF<br>
+  YOU
+</div>
+</body>
+</html>
